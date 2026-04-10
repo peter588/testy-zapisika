@@ -6,63 +6,80 @@
     <title>Test Widgetów Zapisik</title>
     
     <meta name="zapisik:employee-key" content="piotr-pawlak" />
-    
-    <script src="https://zapisik.pl/widget.js"></script>
 
     <style>
-        body { font-family: sans-serif; line-height: 1.6; padding: 40px; background: #f4f4f9; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        section { border-bottom: 1px solid #eee; padding: 20px 0; }
-        h2 { color: #333; font-size: 1.2rem; }
-        p { color: #666; font-size: 0.9rem; }
+        body { 
+            font-family: sans-serif; 
+            line-height: 1.6; 
+            padding: 40px; 
+            background: #f4f4f9; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        section { 
+            border-bottom: 1px solid #eee; 
+            padding: 20px 0; 
+        }
+        section:last-child { border-bottom: none; }
+        h1 { color: #1a1a1a; text-align: center; }
+        h2 { color: #333; font-size: 1.1rem; margin-bottom: 10px; }
+        p { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Testowanie integracji Zapisik.pl</h1>
-    <p>Przetestuj działanie poszczególnych metod rezerwacji:</p>
+    <p style="text-align: center;">Weryfikacja intuicyjności procesu osadzania widgetów.</p>
 
     <section>
         <h2>1. Widżet Ogólny (Cała firma)</h2>
-        <p>Powinien otworzyć wybór usług lub listę wszystkich pracowników.</p>
+        <p>Cel: Sprawdzenie, czy skrypt poprawnie inicjuje przycisk dla głównego profilu firmy.</p>
         <div
             data-zapisik="pawlak-inc"
             data-primary-color="#a855f7"
             data-button-text="Zarezerwuj w Pawlak Inc"
             data-border-radius="8"
             data-dark-mode="false"
-            data-widget-type="calendar"
-        ></div>
+            data-widget-type="calendar">
+        </div>
     </section>
 
     <section>
-        <h2>2. Widżet z kluczem w przycisku (Atrybut data)</h2>
-        <p>Ten konkretny przycisk ma przypisanego Piotra Pawlaka w kodzie.</p>
+        <h2>2. Widżet z przypisanym pracownikiem (data-employee-key)</h2>
+        <p>Cel: Weryfikacja bezpośredniego kierowania rezerwacji do specjalisty przez atrybut w kodzie.</p>
         <div
             data-zapisik="pawlak-inc"
             data-primary-color="#a855f7"
-            data-button-text="Zarezerwuj u Piotra (opcja 2)"
+            data-button-text="Zarezerwuj u Piotra (Bezpośrednio)"
             data-border-radius="8"
             data-dark-mode="false"
             data-widget-type="calendar"
-            data-employee-key="piotr-pawlak"
-        ></div>
+            data-employee-key="piotr-pawlak">
+        </div>
     </section>
 
     <section>
         <h2>3. Widżet sterowany przez META tag</h2>
-        <p>Przycisk w kodzie jest "czysty", ale pobiera informację o Piotrze z nagłówka strony.</p>
+        <p>Cel: Test automatycznego pobierania kontekstu specjalisty z nagłówka strony.</p>
         <div
             data-zapisik="pawlak-inc"
             data-primary-color="#a855f7"
-            data-button-text="Zarezerwuj u Piotra (opcja 3)"
+            data-button-text="Zarezerwuj u Piotra (przez Meta Tag)"
             data-border-radius="8"
             data-dark-mode="false"
-            data-widget-type="calendar"
-        ></div>
+            data-widget-type="calendar">
+        </div>
     </section>
 </div>
 
+<script src="https://zapisik.pl/widget.js"></script>
+
 </body>
-</html> 
+</html>
